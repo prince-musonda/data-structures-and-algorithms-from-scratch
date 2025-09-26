@@ -35,6 +35,7 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
             self.length += 1
+        return True
 
     def pop(self):
         #if no item is available:
@@ -58,6 +59,20 @@ class LinkedList:
             self.tail = next
             self.length -= 1
             return temp
+        
+    def pop_first(self):
+        # case1: list is empty
+        if self.length == 0:
+            return None
+        # case2
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            self.length -= 1
+            if self.length == 0:
+                self.tail = None
+            return temp
 
 
     def print_list(self):
@@ -76,6 +91,7 @@ my_list.prepend(1)
 my_list.pop()
 my_list.pop()
 my_list.pop()
+my_list.pop_first()
 
 
 my_list.print_list()
