@@ -73,6 +73,22 @@ class LinkedList:
             if self.length == 0:
                 self.tail = None
             return temp
+    
+    def get(self,index):
+        #case: if the the list is empty or requested index not in list, or used a negative index:
+        if self.head is None or index >= self.length or index < 0:
+            return None
+        #case: if index is of the last item in the list
+        elif (index+1) == self.length:
+            return self.tail
+        else:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp
+
+
+            
 
 
     def print_list(self):
@@ -81,21 +97,3 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
-
-my_list = LinkedList(3)
-my_list.prepend(2)
-my_list.append(4)
-my_list.append(5)
-my_list.append(6)
-my_list.prepend(1)
-my_list.pop()
-my_list.pop()
-my_list.pop()
-my_list.pop_first()
-
-
-my_list.print_list()
-
- 
-
-                                                                                                                 
