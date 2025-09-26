@@ -23,18 +23,24 @@ class LinkedList:
             self.tail = new_node
             self.length += 1
     
-    def preappend(self,value):
-        new_node = Node(value)
-        first_node = self.head
-        self.head = new_node
-        self.head.next = first_node
-        self.length += 1
+    def prepend(self,value):
+        # case 1: list is empty
+        if self.length == 0:
+            new_node = Node(value)
+            self.head = new_node
+            self.tail = new_node
+        # case 2: list is not empty
+        else:
+            new_node = Node(value)
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
 
     def pop(self):
         #if no item is available:
         if self.head is None:
             return None
-        # if only one item is availble in the list
+        # if only one item i availble in the list
         elif self.length == 1:
             popped_node = self.head
             self.head = None
@@ -62,11 +68,11 @@ class LinkedList:
 
 
 my_list = LinkedList(3)
-my_list.preappend(2)
+my_list.prepend(2)
 my_list.append(4)
 my_list.append(5)
 my_list.append(6)
-my_list.preappend(1)
+my_list.prepend(1)
 my_list.pop()
 my_list.pop()
 my_list.pop()
