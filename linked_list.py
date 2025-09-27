@@ -41,7 +41,7 @@ class LinkedList:
         #if no item is available:
         if self.head is None:
             return None
-        # if only one item i availble in the list
+        # if only one item  availble in the list
         elif self.length == 1:
             popped_node = self.head
             self.head = None
@@ -56,13 +56,13 @@ class LinkedList:
                 prev = temp
                 temp = temp.next
             prev.next = None
-            self.tail = next
+            self.tail = prev
             self.length -= 1
             return temp
         
     def pop_first(self):
         # case1: list is empty
-        if self.length == 0:
+        if self.head is None:
             return None
         # case2
         else:
@@ -88,7 +88,14 @@ class LinkedList:
             return temp
 
 
-            
+    def set_value(self,index,value):
+        node = self.get(index)
+        if node is not None:
+            node.value = value
+            return True
+        else:
+            return False
+
 
 
     def print_list(self):
@@ -96,4 +103,5 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
 
