@@ -22,6 +22,7 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
             self.length += 1
+        return True
     
     def prepend(self,value):
         # case 1: list is empty
@@ -96,6 +97,17 @@ class LinkedList:
         else:
             return False
 
+
+    def insert(self,index,value):
+        # case: index less than zero or greater than length
+        if index < 0 or index > self.length:
+            return False
+        else:
+            new_node = Node(value)
+            temp = self.get(index-1)
+            new_node.next = temp.next
+            temp.next = new_node
+            self.length += 1
 
 
     def print_list(self):
