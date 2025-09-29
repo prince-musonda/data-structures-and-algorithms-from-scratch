@@ -155,3 +155,8 @@ my_list.append(14)
 my_list.append(15)
 my_list.reverse()
 my_list.print_list()
+
+nodes = {my_list.head : 0}
+nodes[my_list.head.next] = 1
+
+print(nodes[my_list.head.next])
