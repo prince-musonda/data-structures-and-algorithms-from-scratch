@@ -112,23 +112,35 @@ class LinkedList:
     def remove(self, index):
         if index < 0 or index >= self.length:
             return None
-        #case
+        #case index is first node
         elif index == 0:
-            return self.pop_first()
             self.length -=1
+            return self.pop_first()
         #case: index is of the last item
         elif index == (self.length-1):
             return self.pop()
+        #case: index is of any item in the middle
         else:
             prev_node= self.get(index-1)
             temp = prev_node.next
             after_node = prev_node.next.next
             prev_node.next = after_node
             temp.next = None
-            return temp
             self.length -= 1
+            return temp
+            
         
-
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        prev = None
+        after = temp.next
+        while temp is not None:
+            after = temp.next
+            temp.next = prev
+            prev = temp
+            temp = after
 
     def print_list(self):
         temp = self.head
@@ -140,5 +152,6 @@ class LinkedList:
 my_list = LinkedList(12)
 my_list.append(13)
 my_list.append(14)
-my_list.remove(0)
+my_list.append(15)
+my_list.reverse()
 my_list.print_list()
